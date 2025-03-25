@@ -1,16 +1,19 @@
 package dev.giuliobronson.desafio_itau_backend.domain;
 
 import java.time.OffsetDateTime;
+import java.util.UUID;
 
 import lombok.Getter;
 
 @Getter
 public class Transacao {
 
+    private String id;
     private double valor;
     private OffsetDateTime dataHora;
 
     public Transacao(double valor, OffsetDateTime dataHora) {
+        this.id = UUID.randomUUID().toString();
         this.valor = validarValorDaTransacao(valor);
         this.dataHora = validarTempoDaTransacao(dataHora);
     }
