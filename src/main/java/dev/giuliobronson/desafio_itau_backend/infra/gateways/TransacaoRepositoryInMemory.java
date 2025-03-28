@@ -1,5 +1,6 @@
 package dev.giuliobronson.desafio_itau_backend.infra.gateways;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,11 @@ public class TransacaoRepositoryInMemory implements TransacaoRepository {
     @Override
     public boolean deletarTransacao(String id) {
         return transacoes.removeIf(p -> p.getId().equals(id));
+    }
+
+    @Override
+    public List<Transacao> filtrarPorDataHora(OffsetDateTime dataHora) {
+        return transacoes.stream().filter(p -> p.getDataHora().isAfter(dataHora)).toList();
     }
 
 }
