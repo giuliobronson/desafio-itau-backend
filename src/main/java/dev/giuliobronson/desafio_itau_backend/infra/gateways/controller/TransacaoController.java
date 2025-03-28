@@ -9,6 +9,8 @@ import dev.giuliobronson.desafio_itau_backend.domain.Transacao;
 import dev.giuliobronson.desafio_itau_backend.infra.gateways.controller.dto.TransacaoDto;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -28,6 +30,12 @@ public class TransacaoController {
         var uri = uriBuilder.path("/transacao/{id}").buildAndExpand(transacao.getId()).toUri();
         repository.salvarTransacao(transacao);
         return ResponseEntity.created(uri).body(new TransacaoDto(transacao));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletarTransacao(@PathVariable String id) {
+        repository.deletarTransacao(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
