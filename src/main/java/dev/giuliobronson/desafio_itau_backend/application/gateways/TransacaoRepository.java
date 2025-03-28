@@ -4,8 +4,8 @@ import dev.giuliobronson.desafio_itau_backend.domain.Transacao;
 
 public interface TransacaoRepository {
 
-    public void salvarTransacao(Transacao transacao);
+    public boolean salvarTransacao(Transacao transacao);
 
-    public void deletarTransacao(String id);
+    public boolean deletarTransacao(String id);
 
 }

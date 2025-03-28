@@ -14,13 +14,13 @@ public class TransacaoRepositoryInMemory implements TransacaoRepository {
     private final List<Transacao> transacoes = new ArrayList<Transacao>();
 
     @Override
-    public void salvarTransacao(Transacao transacao) {
-        transacoes.add(transacao);
+    public boolean salvarTransacao(Transacao transacao) {
+        return transacoes.add(transacao);
     }
 
     @Override
-    public void deletarTransacao(String id) {
-        // Auto-generated method stub
+    public boolean deletarTransacao(String id) {
+        return transacoes.removeIf(p -> p.getId().equals(id));
     }
 
 }
