@@ -20,8 +20,8 @@ public class TransacaoRepositoryInMemory implements TransacaoRepository {
     }
 
     @Override
-    public boolean deletarTransacao(String id) {
-        return transacoes.removeIf(p -> p.getId().equals(id));
+    public void deletarTransacao() {
+        transacoes.clear();
     }
 
     @Override

@@ -9,7 +9,7 @@ public interface TransacaoRepository {
 
     public boolean salvarTransacao(Transacao transacao);
 
-    public boolean deletarTransacao(String id);
+    public void deletarTransacao();
 
     public List<Transacao> filtrarPorDataHora(OffsetDateTime dataHora);
 

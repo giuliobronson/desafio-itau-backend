@@ -16,11 +16,11 @@ import lombok.Setter;
 @EqualsAndHashCode
 public class EstatisticasDto implements Serializable {
 
-    private double count = .0;
-    private double sum = .0;
-    private double avg = .0;
-    private double min = .0;
-    private double max = .0;
+    private double count;
+    private double sum;
+    private double avg;
+    private double min;
+    private double max;
 
     public EstatisticasDto(DoubleSummaryStatistics stats) {
         this.count = stats.getCount();
@@ -28,6 +28,10 @@ public class EstatisticasDto implements Serializable {
         this.avg = stats.getAverage();
         this.min = stats.getMin();
         this.max = stats.getMax();
+
+        if(stats.getCount() == 0) {
+            this.min = this.max = .0;
+        }
     }
 
 }

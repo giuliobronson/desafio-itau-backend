@@ -8,6 +8,7 @@ import dev.giuliobronson.desafio_itau_backend.infra.controller.dto.EstatisticasD
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
@@ -20,9 +21,9 @@ public class EstatisticasController {
         this.usecase = usecase;
     }
 
-    @GetMapping()
-    public ResponseEntity<EstatisticasDto> calcularEstatisticas() {
-        var stats = usecase.calcularEstatisticas();
+    @GetMapping("/{seconds}")
+    public ResponseEntity<EstatisticasDto> calcularEstatisticas(@PathVariable int seconds) {
+        var stats = usecase.calcularEstatisticas(seconds);
         return ResponseEntity.ok(new EstatisticasDto(stats));
     }
 
