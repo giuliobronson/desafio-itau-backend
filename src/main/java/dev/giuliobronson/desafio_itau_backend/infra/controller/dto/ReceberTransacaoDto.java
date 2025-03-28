@@ -19,7 +19,7 @@ import lombok.Setter;
 public class ReceberTransacaoDto implements Serializable {
 
     @NotNull
-    private double valor;
+    private Double valor;
 
     @NotNull
     private OffsetDateTime dataHora;

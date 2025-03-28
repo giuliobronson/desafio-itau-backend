@@ -17,8 +17,8 @@ public class CalcularEstatisticasUseCase {
         this.repository = repository;
     }
 
-    public DoubleSummaryStatistics calcularEstatisticas() {
-        var transacoes = repository.filtrarPorDataHora(OffsetDateTime.now().minusDays(1));
+    public DoubleSummaryStatistics calcularEstatisticas(int seconds) {
+        var transacoes = repository.filtrarPorDataHora(OffsetDateTime.now().minusSeconds(seconds));
         var stats = transacoes.stream().mapToDouble(Transacao::getValor).summaryStatistics();
         return stats;
     }
